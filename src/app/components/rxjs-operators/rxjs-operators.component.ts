@@ -64,6 +64,7 @@ export class RxjsOperatorsComponent implements OnInit {
     this.originalOperators = operators;
     this.groups = groups;
     this.filterByGroup(this.groups[0]);
+    this.performOperator(this.operators[0]);
     this.personObs = of(this.person);
     this.personPromise = Promise.resolve(this.person);
   }
