@@ -8,14 +8,10 @@ export class ApiService {
   apiUrl = 'https://jsonplaceholder.typicode.com';
 
   getPosts() {
-    return this.httpClient.get(
-      `${'https://jsonplaceholder.typicode.com'}/posts`
-    );
+    return this.httpClient.get(`${this.apiUrl}/posts`);
   }
 
   getComments() {
-    return this.httpClient.get(
-      `${'https://jsonplaceholder.typicode.com'}/comments`
-    );
+    return this.httpClient.get(`${this.apiUrl}/comments`);
   }
 }

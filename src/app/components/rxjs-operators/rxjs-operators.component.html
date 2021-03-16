@@ -2,11 +2,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2">
-        <h2>Groups</h2>
+        <h2>Types</h2>
         <ol>
-          <li *ngFor="let group of groups">
-            <button class="btn btn-dark mt-3" (click)="filterByGroup(group)">
-              <b> {{ group.label }} </b>
+          <li *ngFor="let type of types">
+            <button class="btn btn-dark mt-3" (click)="filterByType(type)">
+              <b> {{ type.label }} </b>
             </button>
           </li>
         </ol>
@@ -16,9 +16,9 @@
         <p>
           <span
             ><strong>
-              {{ this.selectedGroup.label }}
+              {{ this.selectedType.label }}
             </strong></span
-          >: {{ this.selectedGroup?.description }}
+          >: {{ this.selectedType?.description }}
         </p>
       </div>
       <div class="col-sm-2">
@@ -39,9 +39,9 @@
           operator: <b>{{ selectedOperator?.label }}</b>
         </div>
         <div>
-          group:
+          type:
           <b>
-            {{ selectedOperator?.group }}
+            {{ selectedOperator?.type }}
           </b>
         </div>
         <div>

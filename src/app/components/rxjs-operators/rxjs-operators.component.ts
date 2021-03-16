@@ -26,7 +26,7 @@ import {
   tap,
   share,
 } from 'rxjs/operators';
-import { groups, operators } from 'src/app/constants/constants';
+import { types, operators } from 'src/app/constants/constants';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -37,10 +37,10 @@ import { ApiService } from 'src/app/services/api.service';
 export class RxjsOperatorsComponent implements OnInit {
   loading: boolean;
   operators: (
-    | { id: string; label: string; group: string }
-    | { id: string; label: string; group: string }
+    | { id: string; label: string; type: string }
+    | { id: string; label: string; type: string }
   )[];
-  groups: { id: string; label: string; description: string }[];
+  types: { id: string; label: string; description: string }[];
   personObs: Observable<any>;
   personPromise: Promise<any>;
   person: any = {
@@ -48,22 +48,23 @@ export class RxjsOperatorsComponent implements OnInit {
     age: 20,
   };
   selectedOperator: any;
-  selectedGroup: any;
+  selectedType: any;
   data: any;
   result: any;
   keyup$: Observable<any> | undefined;
   originalOperators: {
     id: string;
     label: string;
-    group: string;
+    type: string;
     description: string;
   }[];
+
   constructor(private apiService: ApiService) {
     this.loading = false;
     this.operators = operators;
     this.originalOperators = operators;
-    this.groups = groups;
-    this.filterByGroup(this.groups[0]);
+    this.types = types;
+    this.filterByType(this.types[0]);
     this.performOperator(this.operators[0]);
     this.personObs = of(this.person);
     this.personPromise = Promise.resolve(this.person);
@@ -78,12 +79,12 @@ export class RxjsOperatorsComponent implements OnInit {
     this[functionName]();
   }
 
-  filterByGroup(group) {
+  filterByType(type) {
     this.selectedOperator = null;
-    this.selectedGroup = group;
+    this.selectedType = type;
     this.cleanResults();
     this.operators = this.originalOperators.filter(
-      (operator) => operator.group === group.id
+      (operator) => operator.type === type.id
     );
   }
 
@@ -133,7 +134,6 @@ export class RxjsOperatorsComponent implements OnInit {
 
   switchMap() {
     // cancel from one obs and switch to another having access to both
-
     const posts = this.apiService.getPosts();
     const comments = this.apiService.getComments();
 
@@ -179,6 +179,7 @@ export class RxjsOperatorsComponent implements OnInit {
 
   takeLast() {
     this.data = [1, 2, 3, 4];
+    // is going to take the las 2 items of the array
     from(this.data)
       .pipe(takeLast(2))
       .subscribe((value) => {

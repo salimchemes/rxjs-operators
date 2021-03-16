@@ -2,7 +2,7 @@ export const operators = [
   {
     id: 'of',
     label: 'of',
-    group: 'creation',
+    type: 'creation',
     description:
       'emit variable amount of values in a sequence and then emits a single complete notification',
     function: `of() {
@@ -16,7 +16,7 @@ export const operators = [
   {
     id: 'from',
     label: 'from',
-    group: 'creation',
+    type: 'creation',
     description: 'turn an array, promise, or iterable into an observable.',
     function: `from() {
     this.data = [1, 2, 3, 4];
@@ -29,7 +29,7 @@ export const operators = [
   {
     id: 'map',
     label: 'map',
-    group: 'transformation',
+    type: 'transformation',
     description:
       'apply projection with each value from source. Will only map person name from person object.',
     function: `map() {
@@ -44,7 +44,7 @@ export const operators = [
   {
     id: 'tap',
     label: 'tap',
-    group: 'utility',
+    type: 'utility',
     description:
       'transparently perform actions or side-effects, such as logging. (Check console to see the logs)',
     function: `tap() {
@@ -57,7 +57,7 @@ export const operators = [
   {
     id: 'switchMap',
     label: 'switchMap',
-    group: 'transformation',
+    type: 'transformation',
     description:
       'map to observable, complete previous inner observable, emit values. This operator can cancel in-flight network requests! Will request comments and posts from 2 endpoints',
     function: `switchMap() {
@@ -82,7 +82,7 @@ export const operators = [
   {
     id: 'mergeMap',
     label: 'mergeMap',
-    group: 'transformation',
+    type: 'transformation',
     description:
       'merge map and map generating a new map (flatMap is exactly the same). Map to observable, emit values. Based on Color and Driver, we create the Car object',
     function: `mergeMap() {
@@ -114,7 +114,7 @@ export const operators = [
   {
     id: 'pluck',
     label: 'pluck',
-    group: 'transformation',
+    type: 'transformation',
     description:
       'select property to emit. We pluck the code from the typed key. Type something...',
     function: `pluck() {
@@ -132,14 +132,14 @@ export const operators = [
   {
     id: 'exhaustMap',
     label: 'exhaustMap',
-    group: 'transformation',
+    type: 'transformation',
     description:
       'map to inner observable, ignore other values until that observable completes',
   },
   {
     id: 'scan',
     label: 'scan',
-    group: 'transformation',
+    type: 'transformation',
     description: 'reduce over time. Sum over time starting with zero',
     function: `scan() {
     const source = of(1, 2, 3);
@@ -156,7 +156,7 @@ export const operators = [
   {
     id: 'debounceTime',
     label: 'debounceTime',
-    group: 'filtering',
+    type: 'filtering',
     description:
       'discard emitted values that take less than the specified time between output',
     function: `debounceTime() {
@@ -173,7 +173,7 @@ export const operators = [
   {
     id: 'take',
     label: 'take',
-    group: 'filtering',
+    type: 'filtering',
     description:
       'emit provided number of values before completing. We take the first value emitted from an array of streams',
     function: ` take() {
@@ -186,7 +186,7 @@ export const operators = [
   {
     id: 'takeUntil',
     label: 'takeUntil',
-    group: 'filtering',
+    type: 'filtering',
     description:
       'emit values until provided observable emits. Will emit for every second until timer$ is completed after 5s',
     function: ` takeUntil() {
@@ -205,7 +205,7 @@ export const operators = [
   {
     id: 'takeLast',
     label: 'takeLast',
-    group: 'filtering',
+    type: 'filtering',
     description:
       'emit the last n emitted values before completion. Sum last 2 digits from an array',
     function: `takeLast() {
@@ -220,7 +220,7 @@ export const operators = [
   {
     id: 'takeWhile',
     label: 'takeWhile',
-    group: 'filtering',
+    type: 'filtering',
     description:
       'emit values until provided expression is false. Console log counter until counter < 3',
     function: `takeWhile() {
@@ -235,7 +235,7 @@ export const operators = [
   {
     id: 'first',
     label: 'first',
-    group: 'filtering',
+    type: 'filtering',
     description: 'emit the first value or first to pass provided expression',
     function: `first() {
     this.data = [1, 2, 3, 4];
@@ -247,7 +247,7 @@ export const operators = [
   {
     id: 'concat',
     label: 'concat',
-    group: 'combination',
+    type: 'combination',
     description:
       'subscribe to observables in order as previous completes.  You can think of concat like a line at a ATM, the next transaction (subscription) cannot start until the previous completes!',
     function: `concat() {
@@ -279,7 +279,7 @@ export const operators = [
   {
     id: 'forkJoin',
     label: 'forkJoin',
-    group: 'combination',
+    type: 'combination',
     description:
       'when all observables complete, emit the last emitted value from each. We get comments and post from api request as an array of responses',
     function: `forkJoin() {
@@ -297,7 +297,7 @@ export const operators = [
   {
     id: 'combineLatest',
     label: 'combineLatest',
-    group: 'combination',
+    type: 'combination',
     description:
       'when any observable emits a value, emit the last emitted value from each.',
     function: `combineLatest() {
@@ -321,14 +321,14 @@ export const operators = [
   {
     id: 'withLatestFrom',
     label: 'withLatestFrom',
-    group: 'combination',
+    type: 'combination',
     description:
       'provide the last value from another observable. Useful for caching to avoid api request',
   },
   {
     id: 'share',
     label: 'share',
-    group: 'multicasting',
+    type: 'multicasting',
     description:
       'share source among multiple subscribers. We get posts from api. Used to avoid multiple API requests. Remove share operator to check 2 requests were performed',
     function: `share() {
@@ -342,7 +342,7 @@ export const operators = [
   },
 ];
 
-export const groups = [
+export const types = [
   {
     id: 'creation',
     label: 'creation',
