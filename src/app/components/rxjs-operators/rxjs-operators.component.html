@@ -1,70 +1,75 @@
 <section>
-  <div class="row">
-    <div class="col-2">
-      <h2>Groups</h2>
-      <ol>
-        <li *ngFor="let group of groups">
-          <button class="btn btn-dark mt-3" (click)="filterByGroup(group)">
-            <b> {{ group.label }} </b>
-          </button>
-        </li>
-      </ol>
-    </div>
-    <div class="col-2">
-      <h2>Description</h2>
-      <p>
-        <span
-          ><strong>
-            {{ this.selectedGroup.label }}
-          </strong></span
-        >: {{ this.selectedGroup?.description }}
-      </p>
-    </div>
-    <div class="col-2">
-      <h2>Operators</h2>
-      <ol>
-        <li *ngFor="let operator of operators">
-          <button class="btn btn-dark mt-3" (click)="performOperator(operator)">
-            <b> {{ operator.label }} </b>
-          </button>
-        </li>
-      </ol>
-    </div>
-    <div class="col-6" *ngIf="selectedOperator">
-      <div>
-        operator: <b>{{ selectedOperator?.label }}</b>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2">
+        <h2>Groups</h2>
+        <ol>
+          <li *ngFor="let group of groups">
+            <button class="btn btn-dark mt-3" (click)="filterByGroup(group)">
+              <b> {{ group.label }} </b>
+            </button>
+          </li>
+        </ol>
       </div>
-      <div>
-        group:
-        <b>
-          {{ selectedOperator?.group }}
-        </b>
+      <div class="col-sm-2">
+        <h2>Description</h2>
+        <p>
+          <span
+            ><strong>
+              {{ this.selectedGroup.label }}
+            </strong></span
+          >: {{ this.selectedGroup?.description }}
+        </p>
       </div>
-      <div>
-        description:
-        <b>
-          {{ selectedOperator?.description }}
-        </b>
+      <div class="col-sm-2">
+        <h2>Operators</h2>
+        <ol>
+          <li *ngFor="let operator of operators">
+            <button
+              class="btn btn-dark mt-3"
+              (click)="performOperator(operator)"
+            >
+              <b> {{ operator.label }} </b>
+            </button>
+          </li>
+        </ol>
       </div>
-      <div *ngIf="this.data">
-        data:
-        <ngx-json-viewer
-          [json]="this.data"
-          [expanded]="false"
-        ></ngx-json-viewer>
-      </div>
-      <div *ngIf="this.method">
-        code:
-        <pre>
+      <div class="col-sm-6" *ngIf="selectedOperator">
+        <div>
+          operator: <b>{{ selectedOperator?.label }}</b>
+        </div>
+        <div>
+          group:
+          <b>
+            {{ selectedOperator?.group }}
+          </b>
+        </div>
+        <div>
+          description:
+          <b>
+            {{ selectedOperator?.description }}
+          </b>
+        </div>
+        <div *ngIf="this.data">
+          data:
+          <ngx-json-viewer
+            [json]="this.data"
+            [expanded]="false"
+          ></ngx-json-viewer>
+        </div>
+        <div *ngIf="this.method">
+          code:
+          <pre>
             <code [highlight]="this.method.toString()" [lineNumbers]="true" ></code>
           </pre>
-      </div>
-      <div *ngIf="this.result">
-        result:
-        <ngx-json-viewer
-          [json]="this.result"
-          [expanded]="false"
-        ></ngx-json-viewer>
+        </div>
+        <div *ngIf="this.result">
+          result:
+          <ngx-json-viewer
+            [json]="this.result"
+            [expanded]="false"
+          ></ngx-json-viewer>
+        </div>
       </div>
     </div>
   </div>
