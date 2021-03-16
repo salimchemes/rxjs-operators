@@ -24,6 +24,7 @@ import {
   takeUntil,
   takeWhile,
   tap,
+  share,
 } from 'rxjs/operators';
 import { groups, operators } from 'src/app/constants/constants';
 import { ApiService } from 'src/app/services/api.service';
@@ -50,7 +51,6 @@ export class RxjsOperatorsComponent implements OnInit {
   selectedGroup: any;
   data: any;
   result: any;
-  method: any;
   keyup$: Observable<any> | undefined;
   originalOperators: {
     id: string;
@@ -76,7 +76,6 @@ export class RxjsOperatorsComponent implements OnInit {
     this.cleanResults();
     const functionName = operator.id;
     this[functionName]();
-    this.method = this[functionName].toString();
   }
 
   filterByGroup(group) {
@@ -124,7 +123,7 @@ export class RxjsOperatorsComponent implements OnInit {
   }
 
   share() {
-    const request = this.apiService.getPostsWithShare();
+    const request = this.apiService.getPosts().pipe(share());
     this.loading = true;
     request.subscribe(() => (this.loading = false));
     request.subscribe((data) => {
@@ -306,6 +305,5 @@ export class RxjsOperatorsComponent implements OnInit {
   private cleanResults() {
     this.data = null;
     this.result = null;
-    this.method = null;
   }
 }

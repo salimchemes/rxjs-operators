@@ -57,10 +57,10 @@
             [expanded]="false"
           ></ngx-json-viewer>
         </div>
-        <div *ngIf="this.method">
+        <div *ngIf="this.selectedOperator?.function">
           code:
           <pre>
-            <code [highlight]="this.method.toString()" [lineNumbers]="true" ></code>
+            <code [highlight]="this.selectedOperator?.function.toString()" [lineNumbers]="true" ></code>
           </pre>
         </div>
         <div *ngIf="this.result">
